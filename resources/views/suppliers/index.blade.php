@@ -9,12 +9,12 @@
       <thead>
           <tr>
               <th scope="col">#</th>
-              <th scope="col">Nazwa</th>
-              <th scope="col">Adres</th>
-              <th scope="col">Numer telefonu</th>
-              <th scope="col">Email</th>
-              <th scope="col">Branża</th>
-              <th scope="col">Edytuj</th>
+              <th scope="col">Marka</th>
+              <th scope="col">Model</th>
+              <th scope="col">Rodzaj</th>
+              <th scope="col">Rok produkcji</th>
+              <th scope="col">Stan techniczny</th>
+              <th scope="col">Dostępność</th>
 
           </tr>
       </thead>
@@ -25,7 +25,7 @@
                 <td>{{$shop->name}}</td>
                 <td>{{$shop->address}}</td>
                 <td>{{$shop->phone_number}}</td>
-                <td>{{$shop->email}}</td>
+                <td>{{$shop->email}} rok</td>
                 <td>{{$shop->industry}}</td>
 
                 <td><a href="{{route('shops.edit', $shop->id)}}">Edycja</a></td>

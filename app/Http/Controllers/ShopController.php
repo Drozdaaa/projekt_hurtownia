@@ -33,6 +33,6 @@ class ShopController extends Controller
         $shop = shop::findOrFail($id);
         $input = $request->all();
         $shop->update($input);
-        return redirect()->route('shop.index');
+        return redirect()->route('shops.index');
     }
 }

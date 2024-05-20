@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 16042116d879712469bcd358737837c23b503966
 use App\Models\supplier;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
     public function index(){
+<<<<<<< HEAD
         return view('supplier.index',[
             'supplier'=>supplier::all()
         ]);
@@ -35,3 +40,10 @@ class SupplierController extends Controller
         return redirect()->route('supplier.index');
     }   
 }
+=======
+        return view('supppliers.index',[
+            'suppliers'=>supplier::all()
+        ]);
+    }
+}
+>>>>>>> 16042116d879712469bcd358737837c23b503966
