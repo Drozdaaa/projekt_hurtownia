@@ -9,30 +9,27 @@
       <thead>
           <tr>
               <th scope="col">#</th>
-              <th scope="col">Marka</th>
-              <th scope="col">Model</th>
-              <th scope="col">Rodzaj</th>
-              <th scope="col">Rok produkcji</th>
-              <th scope="col">Stan techniczny</th>
-              <th scope="col">Dostępność</th>
+              <th scope="col">Nazwa</th>
+              <th scope="col">Adres</th>
+              <th scope="col">Numer telefonu</th>
+              <th scope="col">Email</th>
 
           </tr>
       </thead>
       <tbody>
-        @forelse ($shops as $shop)
+        @forelse ($suppliers as $supplier)
             <tr>
-                <th scope="row">{{$shop->id}}</th>
-                <td>{{$shop->name}}</td>
-                <td>{{$shop->address}}</td>
-                <td>{{$shop->phone_number}}</td>
-                <td>{{$shop->email}} rok</td>
-                <td>{{$shop->industry}}</td>
+                <th scope="row">{{$supplier->id}}</th>
+                <td>{{$supplier->name}}</td>
+                <td>{{$supplier->address}}</td>
+                <td>{{$supplier->phone_number}}</td>
+                <td>{{$supplier->email}}</td>
 
-                <td><a href="{{route('shops.edit', $shop->id)}}">Edycja</a></td>
+                <td><a href="{{route('suppliers.edit', $supplier->id)}}">Edycja</a></td>
             </tr>
         @empty
             <tr>
-                <th scope="row" colspan="6">Brak sklepów.</th>
+                <th scope="row" colspan="5">Brak dostwaców.</th>
             </tr>
         @endforelse
       </tbody>

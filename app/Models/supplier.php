@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class supplier extends Model
 {
+    public $timestamps = false;
+    protected $attributes = [
+        'period' => 4,
+    ];
+    protected $fillable = ['name','address','phone_number','email'];
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
