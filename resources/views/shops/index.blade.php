@@ -32,7 +32,7 @@
             </tr>
         @empty
             <tr>
-                <th scope="row" colspan="7">Brak maszyn.</th>
+                <th scope="row" colspan="6">Brak sklepów.</th>
             </tr>
         @endforelse
       </tbody>

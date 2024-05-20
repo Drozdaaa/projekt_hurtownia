@@ -19,4 +19,20 @@ class ShopController extends Controller
             'shops' => shop::all()
         ]);
     }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'phone_number' => 'required|integer',
+            'email' => 'required|string',
+            'industry' => 'required|string',
+
+        ]);
+
+        $shop = shop::findOrFail($id);
+        $input = $request->all();
+        $shop->update($input);
+        return redirect()->route('shop.index');
+    }
 }
