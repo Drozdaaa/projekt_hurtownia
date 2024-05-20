@@ -33,7 +33,7 @@
               <li><a class="dropdown-item @if (str_contains(request()->path(), 'shops')) active @endif" href="{{ route('shops.index') }}">Sklepy</a></li>
               <li><a class="dropdown-item" href="#">Dostawcy</a></li>
               <li><a class="dropdown-item" href="#">Zamówienia</a></li>
-              <li><a class="dropdown-item" href="#">Pracownicy</a></li>
+              <li><a class="dropdown-item @if (str_contains(request()->path(), 'employees')) active @endif" href="{{ route('employees.index') }}">Pracownicy</a></li>
             </ul>
           </li>
         </ul>

@@ -22,7 +22,7 @@
                         <label for="name" class="form-label">Nazwa</label>
                         <input id="name" name="name" type="string"
                         class="form-control @if ($errors->first('name')) is-invalid @endif" value="{{ $shop->name }}">
-                        <div class="invalid-feedback">Nieprawidłowa nazwa!</div>
+                        <div class="invalid-feedback">Nieprawidłowe nazwa!</div>
                     </div>
                     <div class="form-group mb-2">
                         <label for="address" class="form-label">Adres</label>
