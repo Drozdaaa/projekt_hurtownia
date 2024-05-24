@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Start</a>
+            <a class="nav-link active @if (str_contains(request()->path(), 'shops')) active @endif" aria-current="page" href="{{ route('hurtownia.index') }}">Start</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,6 +25,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Nasi dostawcy</a>
           </li>
+          @can('is-admin')
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Admin
@@ -35,9 +36,23 @@
               <li><a class="dropdown-item @if (str_contains(request()->path(), 'orders')) active @endif" href="{{ route('orders.index') }}">Zamówienia</a></li>
               <li><a class="dropdown-item @if (str_contains(request()->path(), 'employees')) active @endif" href="{{ route('employees.index') }}">Pracownicy</a></li>
             </ul>
-          </li>
+            @endcan
+        </li>
         </ul>
-
+        <ul id="navbar-user" class="navbar-nav mb-2 mb-lg-0">
+            <li class="pr-5">
+                <button class="nav-link" onclick="themeToggle()"> <i class="bi-moon-stars"></i></button>
+            </li>
+            @if (Auth::check())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}">{{ Auth::user()->name }}, wyloguj się... </a>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Zaloguj się...</a>
+                </li>
+            @endif
+        </ul>
       </div>
     </div>
   </nav>
