@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class shop extends Model
 {
-    public $timestamps = false;
-    protected $attributes = [
-        'period' => 5,
-    ];
     protected $fillable = ['name','address','phone_number','email','industry'];
     public function offers(): HasMany
     {
