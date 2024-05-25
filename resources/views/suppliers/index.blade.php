@@ -5,16 +5,17 @@
     @include('shared.navbar')
 <div class="table-responsive-sm">
     <div class="container">
-    <table class="table table-hover table-striped">
-      <thead>
-          <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nazwa</th>
-              <th scope="col">Adres</th>
-              <th scope="col">Numer telefonu</th>
-              <th scope="col">Email</th>
+        <a href="{{ route('suppliers.create') }}">Dodaj nowy sklep</a>
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Adres</th>
+                <th scope="col">Numer telefonu</th>
+                <th scope="col">Email</th>
 
-          </tr>
+            </tr>
       </thead>
       <tbody>
         @forelse ($suppliers as $supplier)

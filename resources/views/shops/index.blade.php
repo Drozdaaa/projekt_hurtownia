@@ -5,7 +5,8 @@
     @include('shared.navbar')
 <div class="table-responsive-sm">
     <div class="container">
-    <table class="table table-hover table-striped">
+        <a href="{{ route('shops.create') }}">Dodaj nowy sklep</a>
+        <table class="table table-hover table-striped">
       <thead>
           <tr>
               <th scope="col">#</th>

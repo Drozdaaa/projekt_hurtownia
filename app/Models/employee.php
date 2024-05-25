@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class employee extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = ['name','surname','position','email','phone_number'];
 
     public function orders(): HasMany

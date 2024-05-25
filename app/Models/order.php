@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class order extends Model
 {
-
+    public $timestamps = false;
     use HasFactory;
     protected $fillable = ['order_date','delivery_date','quantity','engine','machine_id'];
     public function employee(): BelongsTo{

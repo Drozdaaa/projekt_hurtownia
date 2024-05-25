@@ -16,14 +16,18 @@ Route::controller(WholesalerController::class)->group(function(){
     Route::get('/hurtownia','index')->name('hurtownia.index');
 });
 Route::controller(ShopController::class)->group(function(){
-    Route::get('/sklepy','index')->name('shops.index')->middleware('auth');
+    Route::get('/shops','index')->name('shops.index')->middleware('auth');
+    Route::get('/shops/create','create')->name('shops.create')->middleware('auth');
     Route::get('/shops/{id}/edit', 'edit')->name('shops.edit')->middleware('auth');
     Route::put('/shops/{id}', 'update')->name('shops.update')->middleware('auth');
+    Route::post('/shops', 'store')->name('shop.store');
 });
 Route::controller(supplierController::class)->group(function(){
+    Route::get('/suppliers/create','create')->name('suppliers.create')->middleware('auth');
     Route::get('/suppliers','index')->name('suppliers.index')->middleware('auth');
     Route::get('/suppliers/{id}/edit', 'edit')->name('suppliers.edit')->middleware('auth');
     Route::put('/suppliers/{id}', 'update')->name('suppliers.update')->middleware('auth');
+    Route::post('/suppliers', 'store')->name('suppliers.store');
 });
 
 Route::controller(employeeController::class)->group(function(){

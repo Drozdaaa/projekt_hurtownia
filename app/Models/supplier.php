@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class supplier extends Model
 {
+    public $timestamps = false;
     protected $fillable = ['name','address','phone_number','email'];
     public function products(): HasMany
     {

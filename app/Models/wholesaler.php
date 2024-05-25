@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class wholesaler extends Model
 {
+    public $timestamps = false;
     use HasFactory;
 }

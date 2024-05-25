@@ -6,9 +6,6 @@
     @include('shared.navbar')
 
     <div class="container mt-5 mb-5">
-
-
-
         <div class="row mt-4 mb-4 text-center">
             <h1>Edytuj dane dostwaców</h1>
         </div>

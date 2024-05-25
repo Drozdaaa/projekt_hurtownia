@@ -20,6 +20,7 @@
               <li><a class="dropdown-item" href="#">AGD</a></li>
               <li><a class="dropdown-item" href="#">Chemia</a></li>
               <li><a class="dropdown-item" href="#">Zabawki</a></li>
+              <li><a class="dropdown-item" href="#">Odzież</a></li>
             </ul>
           </li>
           <li class="nav-item">

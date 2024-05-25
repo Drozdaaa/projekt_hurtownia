@@ -48,9 +48,14 @@
                     <div class="form-group mb-3">
                         <label for="industry" class="form-label">Branża</label>
                         <div class="input-group mb-3">
-                            <input id="industry" type="text" name="industry"
-                                step="any" class="form-control @if ($errors->first('industry')) is-invalid @endif" value="{{ $shop->industry }}">
-
+                            <select id="industry" type="text" name="industry"step="any" class="form-select @if ($errors->first('industry')) is-invalid @endif" value="{{ $shop->industry }}">
+                                <option value="Dom">Dom</option>
+                                <option value="Ogród">Ogród</option>
+                                <option value="Spożywcza">Spożywcza</option>
+                                <option value="AGD">AGD</option>
+                                <option value="Chemia">Chemia</option>
+                                <option value="Zabawki">Zabawki</option>
+                                <option value="Odzież">Odzież</option>
                         </div>
                         <div class="invalid-feedback">Nieprawidłowa branża</div>
                     </div>

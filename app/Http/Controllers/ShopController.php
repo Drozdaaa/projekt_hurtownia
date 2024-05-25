@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 use App\Models\shop;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StoreShopRequest;
 class ShopController extends Controller
 {
     public function index(){
         return view('shops.index',[
-            'shops'=>shop::all()
+            'shops' => Shop::orderBy('id')->get()
         ]);
     }
     public function edit($id)
@@ -24,7 +24,7 @@ class ShopController extends Controller
         $request->validate([
             'name' => 'required|string',
             'address' => 'required|string',
-            'phone_number' => 'required|integer',
+            'phone_number' => 'required|integer|max:999999999',
             'email' => 'required|string',
             'industry' => 'required|string',
 
@@ -34,5 +34,19 @@ class ShopController extends Controller
         $input = $request->all();
         $shop->update($input);
         return redirect()->route('shops.index');
+    }
+    public function create()
+    {
+        return view('shops.create'
+
+        );
+    }
+    public function store(StoreShopRequest $request)
+    {
+        $input = $request->all();
+        shop::create($input);
+
+        return redirect()->route('shops.index'
+    );
     }
 }
