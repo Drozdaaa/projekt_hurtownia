@@ -37,6 +37,7 @@
               <li><a class="dropdown-item @if (str_contains(request()->path(), 'orders')) active @endif" href="{{ route('orders.index') }}">Zamówienia</a></li>
               <li><a class="dropdown-item @if (str_contains(request()->path(), 'employees')) active @endif" href="{{ route('employees.index') }}">Pracownicy</a></li>
             </ul>
+            
             @endcan
         </li>
         </ul>

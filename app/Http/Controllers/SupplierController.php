@@ -49,5 +49,10 @@ class SupplierController extends Controller
         return redirect()->route('suppliers.index'
     );
     }
+    public function destroy(supplier $supplier)
+    {
+        $supplier->delete();
+        return redirect()->route('suppliers.index');
+    }
 }
 

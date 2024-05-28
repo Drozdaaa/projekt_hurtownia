@@ -21,6 +21,7 @@ Route::controller(ShopController::class)->group(function(){
     Route::get('/shops/{id}/edit', 'edit')->name('shops.edit')->middleware('auth');
     Route::put('/shops/{id}', 'update')->name('shops.update')->middleware('auth');
     Route::post('/shops', 'store')->name('shop.store');
+    Route::delete('/shops/{shop}', 'destroy')->name('shops.destroy');
 });
 Route::controller(supplierController::class)->group(function(){
     Route::get('/suppliers/create','create')->name('suppliers.create')->middleware('auth');
@@ -28,12 +29,14 @@ Route::controller(supplierController::class)->group(function(){
     Route::get('/suppliers/{id}/edit', 'edit')->name('suppliers.edit')->middleware('auth');
     Route::put('/suppliers/{id}', 'update')->name('suppliers.update')->middleware('auth');
     Route::post('/suppliers', 'store')->name('suppliers.store');
+    Route::delete('/suppliers/{supplier}', 'destroy')->name('suppliers.destroy');
 });
 
 Route::controller(employeeController::class)->group(function(){
     Route::get('/employees','index')->name('employees.index')->middleware('auth');
     Route::get('/employees/{id}/edit', 'edit')->name('employees.edit')->middleware('auth');
     Route::put('/employees/{id}', 'update')->name('employees.update')->middleware('auth');
+    Route::delete('/employees/{employee}', 'destroy')->name('employees.destroy');
 });
 
 Route::controller(orderController::class)->group(function(){

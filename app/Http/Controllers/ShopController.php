@@ -49,4 +49,9 @@ class ShopController extends Controller
         return redirect()->route('shops.index'
     );
     }
+    public function destroy(Shop $shop)
+    {
+        $shop->delete();
+        return redirect()->route('shops.index');
+    }
 }

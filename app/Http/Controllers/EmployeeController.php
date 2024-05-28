@@ -1,16 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\employee;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    public function index(){
-        return view('employees.index',[
-            'employees'=>employee::all()
-        ]);
+    public function index()
+    {
+        // Pobieranie danych przy użyciu funkcji SQL
+        $employees = DB::select('SELECT * FROM get_order_pickers_with_order_count()');
+
+        // Przekazywanie danych do widoku
+        return view('employees.index', ['employees' => $employees]);
     }
     public function edit($id)
     {
@@ -33,6 +36,11 @@ class EmployeeController extends Controller
         $employee = employee::findOrFail($id);
         $input = $request->all();
         $employee->update($input);
+        return redirect()->route('employees.index');
+    }
+    public function destroy(Employee $employee)
+    {
+        $employee->delete();
         return redirect()->route('employees.index');
     }
 }

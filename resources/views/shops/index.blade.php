@@ -16,6 +16,7 @@
               <th scope="col">Email</th>
               <th scope="col">Branża</th>
               <th scope="col">Edytuj</th>
+              <th scope="col">Usuń</th>
 
           </tr>
       </thead>
@@ -28,8 +29,12 @@
                 <td>{{$shop->phone_number}}</td>
                 <td>{{$shop->email}}</td>
                 <td>{{$shop->industry}}</td>
-
                 <td><a href="{{route('shops.edit', $shop->id)}}">Edycja</a></td>
+                <td><form method="POST" action="{{ route('shops.destroy', $shop->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Usuń</button>
+                </form></td>
             </tr>
         @empty
             <tr>
