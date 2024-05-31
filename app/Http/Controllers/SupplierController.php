@@ -7,14 +7,14 @@ use App\Http\Requests\StoreSupplierRequest;
 class SupplierController extends Controller
 {
     public function index(){
-        return view('suppliers.index',[
-            'suppliers'=>supplier::all()
+        return view('supplier.index',[
+            'supplier' => supplier::orderBy('id')->get()
         ]);
     }
     public function edit($id)
     {
         $supplier = supplier::findOrFail($id);
-        return view('supplier.edit', [
+        return view('suppliers.edit', [
             'supplier' => $supplier,
             'suppliers' => supplier::all()
         ]);
@@ -23,10 +23,11 @@ class SupplierController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'address' => 'required|string',
-            'phone_number' => 'required|integer|max:999999999|min:100000000',
+            'surname' => 'required|string',
+            'position' => 'required|string',
+            'phone_number' => 'required|integer',
             'email' => 'required|string',
-            'description' => 'required|string',
+            'salary' => 'required|numeric|min:0',
 
         ]);
 
@@ -49,9 +50,9 @@ class SupplierController extends Controller
         return redirect()->route('suppliers.index'
     );
     }
-    public function destroy(supplier $supplier)
+    public function destroy(supplier $shop)
     {
-        $supplier->delete();
+        $shop->delete();
         return redirect()->route('suppliers.index');
     }
 }

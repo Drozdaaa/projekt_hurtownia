@@ -13,7 +13,7 @@
 
         <div class="row d-flex justify-content-center">
             <div class="col-6">
-                <form method="POST" action="{{ route('suppliers.update', $shop->id) }}" class="needs-validation" novalidate>
+                <form method="POST" action="{{ route('suppliers.update', $supplier->id) }}" class="needs-validation" novalidate>
                     @csrf
                     @method('PUT')
                     <div class="form-group mb-2">
@@ -42,6 +42,14 @@
                                 step="any" class="form-control @if ($errors->first('email')) is-invalid @endif" value="{{ $supplier->email }}">
                         </div>
                         <div class="invalid-feedback">Nieprawidłowy email!</div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Opis</label>
+                        <div class="input-group mb-3">
+                        <textarea id="description" name="description" type="text" rows="5"
+                        class="form-control @if ($errors->first('description')) is-invalid @endif" >{{ $supplier->description }}</textarea>
+                        </div>
+                        <div class="invalid-feedback">Nieprawidłowy opis!</div>
                     </div>
 
                     <div class="text-center mt-4 mb-4">

@@ -9,7 +9,7 @@ class employee extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['name','surname','position','email','phone_number'];
+    protected $fillable = ['name','surname','position','email','phone_number','salary'];
 
     public function orders(): HasMany
     {

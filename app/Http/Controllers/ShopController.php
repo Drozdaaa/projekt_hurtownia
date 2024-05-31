@@ -11,6 +11,7 @@ class ShopController extends Controller
             'shops' => Shop::orderBy('id')->get()
         ]);
     }
+    
     public function edit($id)
     {
         $shop = shop::findOrFail($id);
