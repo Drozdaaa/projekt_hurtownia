@@ -52,6 +52,15 @@
                         </select>
                         <div class="invalid-feedback">Nieprawidłowy dostawca!</div>
                     </div>
+                    <div class="form-group mb-2">
+                        <label for="supplier_id" class="form-label">Sklep</label>
+                        <select id="supplier_id" name="supplier_id" class="form-select @if ($errors->first('supplier_id')) is-invalid @endif">
+                            @foreach($shops as $shop)
+                            <option value="{{ $shop->id }}">{{ $shop->name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="invalid-feedback">Nieprawidłowy sklep!</div>
+                    </div>
 
                     <div class="text-center mt-4 mb-4">
                         <input class="btn btn-success" type="submit" value="Dodaj produkt">

@@ -7,8 +7,8 @@ use App\Http\Requests\StoreSupplierRequest;
 class SupplierController extends Controller
 {
     public function index(){
-        return view('supplier.index',[
-            'supplier' => supplier::orderBy('id')->get()
+        return view('suppliers.index',[
+            'suppliers' => supplier::orderBy('id')->get()
         ]);
     }
     public function edit($id)

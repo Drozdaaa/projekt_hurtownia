@@ -80,7 +80,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
     Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+    Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 });
 
 Route::resource('product_types', ProductTypeController::class);
+// Route to add product to cart
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 
+// Route to view cart
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+
+// Route for checkout process
+Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');

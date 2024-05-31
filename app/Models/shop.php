@@ -13,4 +13,8 @@ class shop extends Model
     {
         return $this->hasMany(order::class);
     }
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductRequest;
 use Illuminate\Http\Request;
 use App\Models\ProductType;
 use App\Models\supplier;
+use App\Models\shop;
 use Database\Seeders\SupplierSeeder;
 
 class ProductController extends Controller
@@ -15,6 +16,7 @@ class ProductController extends Controller
             'products' => Product::orderBy('id')->get(),
             'types' => ProductType::all(),
             'suppliers' => Supplier::all(),
+            'shops' => Shop::all(),
         ]);
     }
     public function home()
@@ -81,7 +83,8 @@ class ProductController extends Controller
     {
         $types = ProductType::all();
         $suppliers = Supplier::all();
-        return view('products.create', compact('types', 'suppliers'));
+        $shops = Shop::all();
+        return view('products.create', compact('types', 'suppliers','shops'));
     }
 
 

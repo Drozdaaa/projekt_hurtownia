@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class product extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['name', 'price', 'quantity', 'supplier_id', 'product_type_id'];
+    protected $fillable = ['name', 'price', 'quantity', 'supplier_id', 'product_type_id', 'shop_id'];
+
 
 
     public function supplier(): BelongsTo{
@@ -25,5 +26,9 @@ class product extends Model
     public function cartItems()
     {
         return $this->hasMany(Cart::class);
+    }
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
     }
 }

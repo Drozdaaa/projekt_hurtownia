@@ -38,5 +38,12 @@
                 </tbody>
             </table>
             <h3>Total Cost: ${{ $totalCost }}</h3>
+
+            <form action="{{ route('cart.checkout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-success">Checkout</button>
+            </form>
         @endif
     </div>
+</body>
+</html>
