@@ -8,18 +8,11 @@ use App\Http\Requests\StoreEmployeeRequest;
 class EmployeeController extends Controller
 {
     public function index()
-    {
-        // Pobieranie danych przy użyciu funkcji SQL
-        //$employees = DB::select('SELECT * FROM get_order_pickers_with_order_count()');
-        //'employees' => employee::orderBy('id')->get()
-        // Przekazywanie danych do widoku
-        //return view('employees.index', ['employees' => $employees]);
+{
+    $employees = DB::select('SELECT * FROM get_order_pickers_with_order_count() ORDER BY id');
+    return view('employees.index', ['employees' => $employees]);
+}
 
-            return view('employees.index',[
-                'employees' => employee::orderBy('id')->get()
-            ]);
-
-    }
     public function edit($id)
     {
         $employee = employee::findOrFail($id);

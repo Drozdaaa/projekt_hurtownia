@@ -74,7 +74,7 @@ class CartController extends Controller
             $cartItem->delete();
         }
 
-        return redirect()->route('orders.index')->with('message', 'Zamówienie zostało złożone.');
+        return redirect()->route('hurtownia.index');
     }
 
     // Funkcja wyświetlania pozycji w koszyku

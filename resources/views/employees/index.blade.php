@@ -3,7 +3,8 @@
     @include('shared.head',['pageTitle'=>'Hurtownia'])
 <body>
     @include('shared.navbar')
-<div class="table-responsive-sm">
+    @can('is-admin')
+    <div class="table-responsive-sm">
     <div class="container">
     <a href="{{ route('employees.create') }}">Dodaj nowego pracownika</a>
     <table class="table table-hover table-striped">
@@ -50,3 +51,4 @@
   </table>
   </div>
 </div>
+@endcan

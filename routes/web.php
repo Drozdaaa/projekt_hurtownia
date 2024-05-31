@@ -7,7 +7,6 @@ use App\Http\Controllers\orderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductTypeController;
-use App\Models\supplier;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,8 +58,6 @@ Route::controller(ProductController::class)->group(function(){
     Route::get('/products/toys','toys')->name('products.toys');
     Route::get('/products/clothes','clothes')->name('products.clothes');
 
-
-
 });
 Route::controller(orderController::class)->group(function(){
     Route::get('/orders','index')->name('orders.index')->middleware('auth');
@@ -74,8 +71,6 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/auth/logout', 'logout')->name('logout');
 });
 
-
-
 Route::middleware(['auth'])->group(function () {
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
@@ -84,11 +79,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::resource('product_types', ProductTypeController::class);
-// Route to add product to cart
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-
-// Route to view cart
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
-
-// Route for checkout process
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
