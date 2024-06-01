@@ -11,14 +11,15 @@ use Database\Seeders\SupplierSeeder;
 
 class ProductController extends Controller
 {
-    public function index(){
-        return view('products.index',[
-            'products' => Product::orderBy('id')->get(),
-            'types' => ProductType::all(),
-            'suppliers' => Supplier::all(),
-            'shops' => Shop::all(),
-        ]);
-    }
+    public function index()
+{
+    return view('products.index', [
+        'products' => Product::with(['supplier', 'shop'])->orderBy('id')->get(),
+        'types' => ProductType::all(),
+        'suppliers' => Supplier::all(),
+        'shops' => Shop::all(),
+    ]);
+}
     public function home()
     {
         $products = Product::where('product_type_id', 1)->get();
@@ -57,7 +58,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = product::findOrFail($id);
-        return view('product.edit', [
+        return view('products.edit', [
             'product' => $product,
             'products' => product::all()
         ]);
@@ -93,8 +94,7 @@ class ProductController extends Controller
         $input = $request->all();
         product::create($input);
 
-        return redirect()->route('products.index'
-    );
+        return redirect()->route('products.index');
     }
     public function destroy(product $product)
     {

@@ -6,7 +6,6 @@
     @include('shared.navbar')
 
     <div class="container mt-5 mb-5">
-
         @include('shared.session-error')
 
         <div class="row mt-4 mb-4 text-center">
@@ -53,8 +52,8 @@
                         <div class="invalid-feedback">Nieprawidłowy dostawca!</div>
                     </div>
                     <div class="form-group mb-2">
-                        <label for="supplier_id" class="form-label">Sklep</label>
-                        <select id="supplier_id" name="supplier_id" class="form-select @if ($errors->first('supplier_id')) is-invalid @endif">
+                        <label for="shop_id" class="form-label">Sklep</label>
+                        <select id="shop_id" name="shop_id" class="form-select @if ($errors->first('shop_id')) is-invalid @endif">
                             @foreach($shops as $shop)
                             <option value="{{ $shop->id }}">{{ $shop->name }}</option>
                             @endforeach

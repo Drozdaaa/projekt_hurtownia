@@ -5,7 +5,7 @@
 <body>
     @include('shared.navbar')
 
-    <div id="home" class="container mt-5">
+    <div id="agd" class="container mt-5">
         <div class="row">
             <h1>AGD</h1>
         </div>
@@ -16,8 +16,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->name }}</h5>
                         <p class="card-text">{{ $product->price }}</p>
-                        <p class="card-text">Supplier: {{ $product->supplier->name }}</p>
+                        <p class="card-text">Dostawca: {{ $product->supplier->name }}</p>
                         <p class="card-text">{{ $product->shop->name }}</p>
+                        <p class="card-text">Dostępna ilość produktu: {{ $product->quantity }}</p>
                         <form action="{{ route('cart.add') }}" method="POST">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">

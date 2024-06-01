@@ -63,6 +63,7 @@ Route::controller(orderController::class)->group(function(){
     Route::get('/orders','index')->name('orders.index')->middleware('auth');
     Route::get('/orders/{id}/edit', 'edit')->name('orders.edit')->middleware('auth');
     Route::put('/orders/{id}', 'update')->name('orders.update')->middleware('auth');
+    Route::get('/orders/{userId}', [OrderController::class, 'getOrdersByUser']);
 
 });
 Route::controller(AuthController::class)->group(function () {

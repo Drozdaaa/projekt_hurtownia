@@ -9,6 +9,7 @@
       <thead>
           <tr>
               <th scope="col">#</th>
+              <th scope="col">Produkt</th>
               <th scope="col">Data zamówienia</th>
               <th scope="col">Data dostawy</th>
               <th scope="col">Ilość</th>
@@ -21,6 +22,7 @@
         @forelse ($orders as $order)
             <tr>
                 <th scope="row">{{$order->id}}</th>
+                <td>{{$order->product->name}}</td>
                 <td>{{$order->order_date}}</td>
                 <td>{{$order->delivery_date}}</td>
                 <td>{{$order->quantity}}</td>
