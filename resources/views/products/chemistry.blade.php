@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="pl" data-bs-theme="">
-@include('shared.head',['pageTitle'=>'Hurtownia'])
-
+@include('shared.head', ['pageTitle' => 'Hurtownia'])
 <body>
     @include('shared.navbar')
 
@@ -15,16 +14,20 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->name }}</h5>
-                        <p class="card-text">{{ $product->price }}</p>
+                        <p class="card-text">{{ $product->price }}$</p>
                         <p class="card-text">Dostawca: {{ $product->supplier->name }}</p>
                         <p class="card-text">{{ $product->shop->name }}</p>
                         <p class="card-text">Dostępna ilość produktu: {{ $product->quantity }}</p>
+
                         <form action="{{ route('cart.add') }}" method="POST">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <div class="form-group">
                                 <label for="quantity-{{ $product->id }}">Ilość</label>
                                 <input type="number" name="quantity" id="quantity-{{ $product->id }}" class="form-control" min="1" value="1" required>
+                                @if ($errors->has('quantity') && old('product_id') == $product->id)
+                                    <span class="text-danger">{{ $errors->first('quantity') }}</span>
+                                @endif
                             </div>
                             <button type="submit" class="btn btn-primary mt-2">Dodaj do koszyka</button>
                         </form>
@@ -37,5 +40,4 @@
         </div>
     </div>
 </body>
-
 </html>

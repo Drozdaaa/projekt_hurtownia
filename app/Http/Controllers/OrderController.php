@@ -1,31 +1,32 @@
 <?php
 namespace App\Http\Controllers;
+
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class OrderController extends Controller
 {
-    public function getOrdersByUser($userId)
+    public function index(Request $request)
     {
-        // Call the stored procedure using DB facade
-        $results = DB::select('CALL get_orders_by_user(?)', [$userId]);
+        
+        $userId = $request->input('user_id');
 
-        // Process the results if needed
-        foreach ($results as $result) {
-            // Handle each result as needed
-            echo "Order ID: $result->id, Order Date: $result->order_date, Delivery Date: $result->delivery_date, Quantity: $result->quantity, Product: $result->product_name <br>";
+        if ($userId) {
+            // Pobieranie zamówień dla danego użytkownika wraz z powiązanymi modelami
+            $orders = Order::with(['user', 'employee', 'product'])
+                           ->where('user_id', $userId)
+                           ->get();
+        } else {
+            $orders = Order::with(['user', 'employee', 'product'])->get();
         }
-    }
 
-    public function index()
-    {
-        $orders = Order::with(['user', 'employee'])->get();
-        return view('orders.index', compact('orders'));
+        return view('orders.index', compact('orders', 'userId'));
     }
 
     public function edit($id)
     {
-        $order = Order::with(['user', 'employee'])->findOrFail($id);
+        $order = Order::with(['user', 'employee', 'product'])->findOrFail($id);
         return view('orders.edit', compact('order'));
     }
 

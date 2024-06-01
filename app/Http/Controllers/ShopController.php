@@ -11,7 +11,7 @@ class ShopController extends Controller
             'shops' => Shop::orderBy('id')->get()
         ]);
     }
-    
+
     public function edit($id)
     {
         $shop = shop::findOrFail($id);
@@ -25,7 +25,7 @@ class ShopController extends Controller
         $request->validate([
             'name' => 'required|string',
             'address' => 'required|string',
-            'phone_number' => 'required|integer|max:999999999',
+            'phone_number' => 'required|integer|max:999999999|min:100000000',
             'email' => 'required|string',
             'industry' => 'required|string',
 

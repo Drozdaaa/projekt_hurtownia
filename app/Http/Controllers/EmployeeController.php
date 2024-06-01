@@ -27,7 +27,7 @@ class EmployeeController extends Controller
             'name' => 'required|string',
             'surname' => 'required|string',
             'position' => 'required|string',
-            'phone_number' => 'required|integer',
+            'phone_number' => 'required|integer|min:100000000|max:999999999',
             'email' => 'required|string',
             'salary' => 'required|numeric|min:0',
         ]);
@@ -39,6 +39,7 @@ class EmployeeController extends Controller
     }
     public function destroy(Employee $employee)
     {
+        $employee->Orders()->delete();
         $employee->delete();
         return redirect()->route('employees.index');
     }

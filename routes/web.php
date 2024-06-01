@@ -59,13 +59,13 @@ Route::controller(ProductController::class)->group(function(){
     Route::get('/products/clothes','clothes')->name('products.clothes');
 
 });
-Route::controller(orderController::class)->group(function(){
-    Route::get('/orders','index')->name('orders.index')->middleware('auth');
-    Route::get('/orders/{id}/edit', 'edit')->name('orders.edit')->middleware('auth');
-    Route::put('/orders/{id}', 'update')->name('orders.update')->middleware('auth');
-    Route::get('/orders/{userId}', [OrderController::class, 'getOrdersByUser']);
 
+
+Route::middleware('auth')->group(function() {
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{id}/edit', [OrderController::class, 'edit'])->name('orders.edit');
 });
+
 Route::controller(AuthController::class)->group(function () {
     Route::get('/auth/login', 'login')->name('login');
     Route::post('/auth/login', 'authenticate')->name('login.authenticate');

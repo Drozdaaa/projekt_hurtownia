@@ -23,13 +23,13 @@ class SupplierController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'surname' => 'required|string',
-            'position' => 'required|string',
-            'phone_number' => 'required|integer',
+            'address' => 'required|string',
+            'phone_number' => 'required|integer|min:100000000|max:999999999',
             'email' => 'required|string',
-            'salary' => 'required|numeric|min:0',
+            'description' => 'required|string',
 
         ]);
+
 
         $supplier = supplier::findOrFail($id);
         $input = $request->all();

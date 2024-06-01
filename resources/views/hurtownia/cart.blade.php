@@ -5,18 +5,18 @@
     @include('shared.navbar')
 
     <div class="container">
-        <h1>Your Cart</h1>
+        <h1>Twój koszyk</h1>
         @if($cartItems->isEmpty())
-            <p>Your cart is empty.</p>
+            <p>Twój koszyk jest pusty</p>
         @else
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Total</th>
-                        <th>Actions</th>
+                        <th>Produkt</th>
+                        <th>Ilość</th>
+                        <th>Cena</th>
+                        <th>Suma</th>
+                        <th>Edycja</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +30,7 @@
                                 <form action="{{ route('cart.remove', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Remove</button>
+                                    <button type="submit" class="btn btn-danger">Usuń</button>
                                 </form>
                             </td>
                         </tr>
@@ -41,7 +41,7 @@
 
             <form action="{{ route('cart.checkout') }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-success">Checkout</button>
+                <button type="submit" class="btn btn-success">Zapłać</button>
             </form>
         @endif
     </div>
