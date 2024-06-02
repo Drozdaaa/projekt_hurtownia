@@ -6,29 +6,32 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Order;
-use App\Models\Employee; // Import modelu Employee
+use App\Models\Employee;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
-    // Funkcja dodawania produktu do koszyka
+
     public function addToCart(Request $request)
     {
+        $user_id = Auth::id();
 
+
+        if (!$user_id) {
+            return redirect()->route('login')->withErrors(['message' => 'Musisz być zalogowany, aby dodać produkty do koszyka.']);
+        }
         $product_id = $request->input('product_id');
         $quantity = $request->input('quantity');
         $user_id = Auth::id();
 
-        // Pobierz produkt z bazy danych
         $product = Product::findOrFail($product_id);
 
-        // Walidacja ilości
         $validator = Validator::make($request->all(), [
             'quantity' => 'required|integer|min:1',
         ]);
 
-        // Dodaj własne sprawdzenie dostępnej ilości produktu
+
         $validator->after(function ($validator) use ($product, $quantity) {
             if ($quantity > $product->quantity) {
                 $validator->errors()->add('quantity', 'Za mała ilość produktu w magazynie.');
@@ -97,7 +100,7 @@ class CartController extends Controller
             ]);
 
             // Usuń pozycję z koszyka
-            $cartItem->delete();
+            
         }
 
         return redirect()->route('hurtownia.index');

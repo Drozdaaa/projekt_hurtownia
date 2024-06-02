@@ -66,46 +66,18 @@
       <div class="container">
             <div class="container text-center">
                 <div class="row">
-                  <div class="col">
-                    <div class="card" style="width: 18rem;">
+                    @forelse ($randomSuppliers as $supplier)
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="card">
 
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $supplier->name }}</h5>
+                                    <p class="card-text">{{ $supplier->description }}</p>
+                                    
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                  </div>
-                  <div class="col">
-                    <div class="card" style="width: 18rem;">
-
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="col">
-                    <div class="card" style="width: 18rem;">
-
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-        </div>
+                        @empty
+                            <p>Brak wycieczek.</p>
+                        @endforelse
+                    </div>
